@@ -32,11 +32,11 @@
              CASE_INFO_TABLE_NAME = "CASE_INFO"  
              oracle = OracleOp(READ_HOSTNAME, READ_PORT, READ_DATABASE_NAME, READ_USERNAME, READ_PASSWORD)  
              sql = "select * from {}".format(CASE_INFO_TABLE_NAME)  
-             conn, cursor = oracle.getConn()  
-    	     result = oracle.readOracle(conn, cursor, sql)  # [(*,*,* ....),()]   
+             conn, cursor = oracle.getConn()   
+	     result = oracle.readOracle(conn, cursor, sql)  # [(*,*,* ....),()]   
              oracle.close(conn, cursor)  
     4>. hbase读取类：HbaseOp类:目前主要是通过phoenix读取hbase  
-        类说明：  
+        类说明：   
 	     def getConn(DATABASE_URL): #phoenix 的服务器地址，返回conn，cursor  
              def upsert(conn,cursor,sql,data=None): #插入和更新语句，插入是data不为None,格式[(),()..]  
              def search(conn,cursor,sql): # 查询数据，返回[(),()]  
@@ -46,8 +46,8 @@
     	     hb = HbaseOp()  
     	     conn, cursor = hb.getConn(DATABASE_URL)   
     	     sql = "select COUNT(*) from CASE_INFO"   
-             result2 = hb.search(conn, cursor, sql)   
-             print(result2)   
+	     result2 = hb.search(conn, cursor, sql)   
+	     print(result2)   
 
 
 
